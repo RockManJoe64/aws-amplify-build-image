@@ -12,4 +12,4 @@ aws ecr-public get-login-password --profile ecr | docker login --username AWS --
 
 docker tag $IMAGE_ID $ECR_REPO:latest
 
-#docker push $ECR_REPO:latest
+docker push $ECR_REPO:latest
