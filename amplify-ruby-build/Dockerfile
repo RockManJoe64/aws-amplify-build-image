@@ -1,10 +1,12 @@
-FROM amazonlinux:latest as builder
+FROM ubuntu:latest
 
-RUN yum -y install yum-plugin-fastestmirror \
-  && yum install -y git gcc gcc-6 make patch bzip2 tar openssl-devel libyaml-devel libffi-devel readline-devel zlib-devel gdbm-devel ncurses-devel ruby-dev ruby-devel \
-  && curl -fsSL https://github.com/rbenv/rbenv-installer/raw/HEAD/bin/rbenv-installer | bash \
-  && echo 'eval "$($HOME/.rbenv/bin/rbenv init - bash)"' >> ~/.bash_profile \
-  && source ~/.bash_profile \
+RUN apt update \
+  && apt install -y git curl openssh-client libssl-dev libreadline-dev zlib1g-dev autoconf bison build-essential libyaml-dev libreadline-dev libncurses5-dev libffi-dev libgdbm-dev \
+  ;
+
+RUN curl -fsSL https://github.com/rbenv/rbenv-installer/raw/HEAD/bin/rbenv-installer | bash \
+  && echo 'eval "$($HOME/.rbenv/bin/rbenv init - bash)"' >> $HOME/.bashrc \
+  && . $HOME/.bashrc \
   && rbenv install 2.7.1 \
   && rbenv global 2.7.1 \
   && gem install bundler \
