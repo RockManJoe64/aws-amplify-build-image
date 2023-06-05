@@ -6,4 +6,4 @@ The requirements given by AWS Amplify for a custom build image can be found [her
 
 ## Current Images
 
-- **amplify-ruby-build** - Ubuntu based image used to build latest Jekyll sites on AWS Amplify using ruby 2.7.x
+- **amplify-ruby-build** - Ubuntu based image used to build latest Jekyll sites on AWS Amplify using ruby ~> 3.2

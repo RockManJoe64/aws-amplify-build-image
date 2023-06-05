@@ -1,5 +1,7 @@
 FROM ubuntu:latest
 
+ARG RUBY_VERSION=3.2.2
+
 RUN apt update \
   && apt install -y \
   git \
@@ -21,8 +23,8 @@ RUN apt update \
 RUN curl -fsSL https://github.com/rbenv/rbenv-installer/raw/HEAD/bin/rbenv-installer | bash \
   && echo 'eval "$(/root/.rbenv/bin/rbenv init - bash)"' >> /root/.bashrc \
   && . /root/.bashrc \
-  && rbenv install 2.7.1 \
-  && rbenv global 2.7.1 \
+  && rbenv install $RUBY_VERSION \
+  && rbenv global $RUBY_VERSION \
   && gem install bundler \
   ;
 
